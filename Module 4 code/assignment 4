@@ -1,0 +1,31 @@
+The code for module 4:
+
+install.packages("tidyverse")
+library(tidyverse)
+frequency<- c(0.6, 0.3, 0.4, 0.4, 0.2, 0.6, 0.3, 0.4, 0.9, 0.2)
+bloodp <- c(103, 87, 32, 42, 59, 109, 78, 205, 135, 176)
+first <- c(1, 1, 1, 1, 0, 0, 0, 0, NA, 1)
+second <- c(0, 0, 1, 1, 0, 0, 1, 1, 1, 1)
+final_decision <- c(0, 1, 0, 1, 0, 1, 0, 1, 1, 1)
+df <- data.frame(frequency, bloodp, first, second, final_decision)
+df
+ggplot(data = df,
+mapping = aes(x = as.factor(final_decision), # Convert to factor if it's categorical
+y = frequency)) +
+geom_boxplot()
+ggplot(data = df,
+mapping = aes(x = as.factor(final_decision), # Convert to factor if it's categorical
+y = bloodp)) +
+geom_boxplot()
+
+df %>%
+gather(variable, value, -final_decision) %>%
+ggplot(aes(x = value, fill = as.factor(final_decision))) +
+geom_bar(position = "dodge", stat = "count", binwidth = 0.1) +
+facet_grid(.~variable, scales = "free_x") +
+theme_minimal()
+
+Explanation:
+With the different variables I chose to compile the data into a data frame. From there I thought that it would be easier to code for a data frame with all the data already compiled. I was a bit confused how many boxplots there are expected to be given that it the boxplots looked weird comparing first vs. final decision or second vs. final decision.
+
+For the histograms I decided to code in the same way (from a data frame). Again, not sure how many bars are expected to be in the data frame. This assigning and coding seems to be a bit trickier than last week's assignment.
