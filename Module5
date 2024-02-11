@@ -1,0 +1,26 @@
+Here is the code for assignment #5:
+
+A <- matrix(1:100, nrow = 10)
+print(A)
+B <- matrix(1:1000, nrow = 10)
+print(B)
+t(A)
+t(B)
+solve(A)
+solve(B)
+det(A)
+det(B)
+
+Discussion part:
+
+We are given the details of each matrix. I decided to print and then transpose each matrix just to get a visual of each matrix. After transposing, it is clear to see that Matrix A is square because it has equal number of columns and rows. Matrix B is not a square matrix. Because Matrix A is square, that means it is singular and has a determinant of 0 by using the det( ) function in R. However, using the det( ) function in R for Matrix B, an error pops up saying:
+
+Error in determinant.matrix(x, logarithm = TRUE, ...) : 
+  'x' must be a square matrix
+ 
+
+In the future, if our matrices did have inverses, we could check if our inverse was correct by multiplying the inverse of our matrix by the original matrix using the following function solve(A)%%(A).
+
+Also, when using the solve( ) function for both matrix A and matrix B there is an error message as both have no inverse. 
+
+Overall, this assignment was definitely harder due to trying to understand matrices and mathematical algorithms used to interpret numerical data.
