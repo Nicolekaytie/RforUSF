@@ -1,0 +1,56 @@
+S3 code:
+
+s3 <- list(animal = "equine", weight = 600)
+class(s3) <- "Horse"
+s3
+s3$weight
+
+workspace loaded from S3 code:
+
+> s3 <- list(animal = "equine", weight = 600)
+> class(s3) <- "Horse"
+> class(s3) <- "Horse"
+> s3
+$animal
+[1] "equine"
+
+$weight
+[1] 600
+
+attr(,"class")
+[1] "Horse"
+> s3$weight
+[1] 600
+
+S4 code:
+s4 <- new("Horse", animal = "equine", weight = 600, age = 14)
+s4
+setClass("Horse",
+representation(
+  animal = "character",
+  weight = "numeric",
+  age = "numeric")
+)
+
+workspace loaded from S4 code:
+An object of class "Horse"
+Slot "animal":
+[1] "equine"
+
+Slot "weight":
+[1] 600
+
+Slot "age":
+[1] 14
+
+Discussion:
+
+1. You can tell which OO system a specific code is associated with in the manner in which the code is written. S3 code is written as a "list" and defines a "class". Overall, S3 system is more informal than S4.
+An S4 code is written with a setclass() function or new() function. S4 is more formal and considered to be more dynamic than S3. 
+
+2. To determine the base type of each dataset in S3 or S4, you could use the class() function associated with the S3 objects which would display the base type. In S4, the showclass() function could be used to display the slots associated with the S4 object
+Both of these functions display the class attribute or the slot associated with the code. 
+
+3. There are different generic functions associated with S3 or S4 in R. These generic functions allow for method dispatches based on the class type or arguments.The usemethod() function can be used with S3 objects and setgeneric() function can be used with S4 objects.
+
+4. There are significant differences between S3 and S4. S3 is an older system used in R that is generally more informal and simpler. Objects have a class attribute and these attributes are usually a single string regarding it being a character vector. On the other hand, S4 is a more formal approach. These classes are specifically defined using the setclass() function. The classes are more structured and allow for better organization. However, S4 is typically more complex than S3 and requires more effort in defining classes and objects. S4 is preferred when developing packages.
