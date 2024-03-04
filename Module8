@@ -1,0 +1,35 @@
+Below is the code for assignment #8:
+
+Assignment.6.Dataset <- read.csv("C:/Users/nicol/Downloads/Assignment 6 Dataset.txt")
+View(Assignment.6.Dataset)
+data <- data.frame(
+Sex = c("Male", "Male", "Female", "Female", "Female", "Female", "Male", "Female", "Female", "Female", "Female", "Female", "Female", "Female", "Female", "Female", "Female", "Female", "Female", "Male"),
+Name = c("Raul", "Booker", "Lauri", "Leonie", "Sherlyn", "Mikaela", "Raphael", "Aiko", "Tiffaney", "Corina", "Petronila", "Alecia", "Shemika", "Fallon", "Deloris", "Randee", "Eboni", "Delfina", "Ernestina", "Milo")
+)
+mean_by_sex <-ddply(data, .(Sex), summarise,
+Count = length(Sex))
+print(mean_by_sex)
+
+output returned from above code:
+
+     Sex Count
+1 Female    16
+2   Male     4
+
+#write output into a file
+
+write.csv(mean_by_sex, file = "mean_by_sex.csv", row.names = FALSE)
+
+#names with i
+
+i_names <- subset(data, grepl("i", Name, ignore.case = TRUE))
+
+#write only i names to csv file
+
+write.csv(i_names, file = "i_names.csv", row.names = FALSE)
+
+Discussion:
+
+To compile the dataset nicely I first put the necessary data into separate dataframes. Since we needed a CSV file based on names, I included the names and we also needed to calculate a mean based on sex so I created a dataframe based on sex. The mean by sex was calculated using plyr function and executed using the print() function (I have included the result above). To write the output into a csv file  using the write.csv() function. 
+
+For the names I followed a similar suit except the names were categorized by names that only had "i". Then I once again used the write.csv() function.
